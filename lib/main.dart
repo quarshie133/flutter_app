@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp extends StatefulWidget {
+  MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  String buttonName = 'Click';
+  int currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +26,28 @@ class MyApp extends StatelessWidget {
         ),
         body: Center(
           child: Center(
-            child: const Text('Body'),
+            child: Column(
+              children: [
+                ElevatedButton(
+                    onPressed: () {
+                      setState(
+                        () {
+                          buttonName = 'Clicked!';
+                        },
+                      );
+                    },
+                    child: Text(buttonName)),
+                ElevatedButton(
+                    onPressed: () {
+                      setState(
+                        () {
+                          buttonName = 'Clicked!';
+                        },
+                      );
+                    },
+                    child: Text(buttonName)),
+              ],
+            ),
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
@@ -32,6 +61,13 @@ class MyApp extends StatelessWidget {
             BottomNavigationBarItem(
                 label: 'Settings', icon: Icon(Icons.settings))
           ],
+          currentIndex: currentIndex,
+          fixedColor: Colors.blueAccent,
+          onTap: (int index) {
+            setState(() {
+              currentIndex = index;
+            });
+          },
         ),
       ),
     );
