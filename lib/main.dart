@@ -25,30 +25,43 @@ class _MyAppState extends State<MyApp> {
           backgroundColor: Colors.blueAccent,
         ),
         body: Center(
-          child: Center(
-            child: Column(
-              children: [
-                ElevatedButton(
-                    onPressed: () {
-                      setState(
-                        () {
-                          buttonName = 'Clicked!';
-                        },
-                      );
-                    },
-                    child: Text(buttonName)),
-                ElevatedButton(
-                    onPressed: () {
-                      setState(
-                        () {
-                          buttonName = 'Clicked!';
-                        },
-                      );
-                    },
-                    child: Text(buttonName)),
-              ],
-            ),
-          ),
+          child: currentIndex == 0
+              ? Container(
+                  width: double.infinity,
+                  color: Colors.red,
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              foregroundColor: Colors.white,
+                              backgroundColor: Colors.orange,
+                            ),
+                            onPressed: () {
+                              setState(
+                                () {
+                                  buttonName = 'Clicked!';
+                                },
+                              );
+                            },
+                            child: Text(buttonName)),
+                        ElevatedButton(
+                            onPressed: () {
+                              setState(
+                                () {
+                                  buttonName = 'Clicked!';
+                                },
+                              );
+                            },
+                            child: Text(buttonName)),
+                      ],
+                    ),
+                  ),
+                )
+              : Image.network(
+                  'https://cdn.mos.cms.futurecdn.net/k6okX2VVUg4qWoyxuNLsf7-1200-80.jpg'),
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: const [
