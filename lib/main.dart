@@ -60,8 +60,7 @@ class _MyAppState extends State<MyApp> {
                     ),
                   ),
                 )
-              : Image.network(
-                  'https://cdn.mos.cms.futurecdn.net/k6okX2VVUg4qWoyxuNLsf7-1200-80.jpg'),
+              : Image.asset('images/portfolio7.jpg'),
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: const [
