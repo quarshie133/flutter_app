@@ -18,9 +18,6 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
-
-
-
 class MyAppExt extends StatefulWidget {
   const MyAppExt({super.key});
 
@@ -31,6 +28,7 @@ class MyAppExt extends StatefulWidget {
 class _MyAppExtState extends State<MyAppExt> {
   String buttonName = 'Click';
   int currentIndex = 0;
+  bool _isClicked = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,7 +79,17 @@ class _MyAppExtState extends State<MyAppExt> {
                   ),
                 ),
               )
-            : Image.asset('images/portfolio7.jpg'),
+            : GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _isClicked = !_isClicked;
+                  });
+                },
+                child: _isClicked
+                    ? Image.asset('images/portfolio7.jpg')
+                    : Image.network(
+                        'https://www.thoughtco.com/thmb/faXxJ27dghERnQJxgidj50JnvNk=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/woman_dreaming-5081da90c33547c891904ed54ca9849a.jpg'),
+              ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
